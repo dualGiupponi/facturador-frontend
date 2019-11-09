@@ -3,6 +3,8 @@
   <div class="card-body">
     <h5 class="card-title">{{ clienteCard.nombre }}</h5>
     <p class="card-text"> Dirección: {{ clienteCard.direccion }} <br> Cuit: {{ clienteCard.cuit }}</p>
-    <a href="#" class="btn btn-primary">Ver Perfil</a>
+    <a [routerLink]="[clienteCard.id]" class="btn btn-primary">Ver Perfil</a>
+    <a [routerLink]="['actualizar', clienteCard.id]" class="btn btn-info">Actualizar</a>
+    <a [routerLink]="['eliminar',clienteCard.id]" class="btn btn-danger">Eliminar</a>
   </div>
 </div>
