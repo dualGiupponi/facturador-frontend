@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Cliente } from '../models/cliente.model';
 
 @Component({
   selector: 'app-tarjeta-cliente',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarjetaClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
+
+  @Input() clienteCard:Cliente
 
   ngOnInit() {
+  }
+
+  verPerfilCliente() {
+    
   }
 
 }

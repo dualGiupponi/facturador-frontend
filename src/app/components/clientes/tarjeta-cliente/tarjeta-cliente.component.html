@@ -1,7 +1,8 @@
 <div class="card">
+  <img [src]="clienteCard.imageCliente" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Nombre del cliente</h5>
-    <p class="card-text">Tarjeta de cliente funciona!</p>
+    <h5 class="card-title">{{ clienteCard.nombre }}</h5>
+    <p class="card-text"> Dirección: {{ clienteCard.direccion }} <br> Cuit: {{ clienteCard.cuit }}</p>
     <a href="#" class="btn btn-primary">Ver Perfil</a>
   </div>
 </div>
