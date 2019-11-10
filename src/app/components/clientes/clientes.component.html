@@ -1,13 +1,16 @@
 <div class="row">
   <div class=" mt-3 col-12 bg-light">
     <h3>Clientes</h3>
-    <p>Cantidad de clientes registrados: <strong>14</strong></p>
+    <p>Cantidad de clientes registrados: <strong>{{ listadoClientes.length }}</strong></p>
     <p>Cantidad de clientes activos el último mes: <strong>7</strong></p>
     <h5>Opciones para clientes</h5>
     <button [routerLink]="['crear']" type="button" class="btn btn-primary">Crear Cliente</button>
   </div>
 </div>
   <!--Tarjeta de presentación de cada cliente-->
+  <div class="row" *ngIf="listadoClientes.length == 0">
+    <h1 class="col-8 text text-info">No hay clientes cargados.</h1>
+  </div>
   <div class="row">
-    <app-tarjeta-cliente [clienteCard]="cliente" *ngFor="let cliente of _httpClientes.listadoClientes" class="mt-2 col-4"></app-tarjeta-cliente>
+    <app-tarjeta-cliente [clienteCard]="cliente" *ngFor="let cliente of listadoClientes" class="mt-2 col-4"></app-tarjeta-cliente>
   </div>

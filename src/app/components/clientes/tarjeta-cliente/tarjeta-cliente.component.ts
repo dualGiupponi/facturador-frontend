@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Cliente } from '../models/cliente.model';
 
@@ -10,15 +9,14 @@ import { Cliente } from '../models/cliente.model';
 })
 export class TarjetaClienteComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   @Input() clienteCard:Cliente
 
   ngOnInit() {
-  }
-
-  verPerfilCliente() {
-    
+    if(this.clienteCard.imageCliente == null){
+      this.clienteCard.imageCliente = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqqWv32vX2afuf65HUGvqUKxXlPFys5xPtn2nkDdOpwBvJv1su&s"
+    }
   }
 
 }

@@ -7,6 +7,7 @@ import { FacturasComponent } from "./components/facturas/facturas.component";
 import { PerfilClienteComponent } from './components/clientes/perfil-cliente/perfil-cliente.component';
 import { EliminarComponent } from './components/shared/eliminar/eliminar.component';
 import { CrearActualizarClienteComponent } from './components/clientes/crear-actualizar-cliente/crear-actualizar-cliente.component';
+import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 const routes: Routes = [
   //Ruta Home
@@ -41,9 +42,20 @@ const routes: Routes = [
     path: "productos",
     component: ProductosComponent
   },
+  //Rutas Facturas
   {
     path: "facturas",
     component: FacturasComponent
+  },
+  //No encontrado
+  {
+    path:'NotFound',
+    component: NotFoundComponent
+  },
+  //Todo lo que no está antes, va a Not Found
+  {
+    path: "**",
+    redirectTo:'NotFound'
   }
 ];
 

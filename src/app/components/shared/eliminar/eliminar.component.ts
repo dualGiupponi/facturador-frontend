@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ClienteService } from '../../clientes/service/cliente.service';
 
 @Component({
   selector: 'app-eliminar',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rutaActiva:ActivatedRoute, private _httpCliente:ClienteService, private router:Router) { }
 
   ngOnInit() {
+  }
+
+  eliminarElemento(){
+    let elemento:string = this.rutaActiva.snapshot.url[0].path //Devuelve si es producto, cliente o factura
+    switch (elemento) {
+      case 'clientes':
+          let id:string = this.rutaActiva.snapshot.params.id
+          this._httpCliente.destroyCliente(id).subscribe(data => this.router.navigate(['/clientes']))
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }

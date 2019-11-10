@@ -1,1 +1,35 @@
-<p>crear-actualizar-cliente works!</p>
+<div class="row mt-3">
+    <h2 class="col-12">Cliente</h2>
+</div>
+<div class="row mt-3">
+    <div class="form-group col-12">
+        <label for="clienteForm.id" class="col-form-label">ID</label>
+        <div>
+            <input type="text" readonly class="form-control-plaintex col-12" id="clienteForm.id" [ngModel]="clienteForm.id">
+        </div>
+    </div>
+    <div class="form-group col-4">
+        <label for="clienteForm.nombre">Nombre</label>
+        <input type="text" class="form-control" id="clienteForm.nombre" placeholder="Ingrese nombre de cliente" [(ngModel)]="clienteForm.nombre">
+    </div>
+    <div class="form-group col-4">
+        <label for="clienteForm.direccion">Dirección</label>
+        <input type="text" class="form-control" id="clienteForm.direccion" placeholder="Ingrese dirección del cliente" [(ngModel)]="clienteForm.direccion">
+    </div>
+    <div class="form-group col-4">
+        <label for="clienteForm.direccion">CUIT</label>
+        <input type="text" class="form-control" id="clienteForm.cuit" placeholder="Ingrese cuit del cliente" [(ngModel)]="clienteForm.cuit">
+    </div>
+    <div class="form-group col-6">
+        <label for="clienteForm.email">Correo Electrónico</label>
+        <input type="email" class="form-control" id="clienteForm.email" placeholder="Ingrese email del cliente" [(ngModel)]="clienteForm.email">
+    </div>
+    <div class="form-group col-6">
+        <label for="clienteForm.telefono">Teléfono</label>
+        <input type="tel" class="form-control" id="clienteForm.telefono" placeholder="Ingrese teléfono del cliente" [(ngModel)]="clienteForm.telefono">
+    </div>
+    <div class="form-group col-8">
+        <button class="btn btn-success" (click)="sendCliente()">Guardar Cliente</button>
+        <button [routerLink]="['/clientes']" class="btn btn-danger">Volver a "Clientes"</button>
+    </div>
+</div>
