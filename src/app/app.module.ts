@@ -14,6 +14,7 @@ import { PerfilClienteComponent } from './components/clientes/perfil-cliente/per
 import { EliminarComponent } from './components/shared/eliminar/eliminar.component';
 import { CrearActualizarClienteComponent } from './components/clientes/crear-actualizar-cliente/crear-actualizar-cliente.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { CrearActualizarProductoComponent } from './components/productos/crear-actualizar-producto/crear-actualizar-producto.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
     PerfilClienteComponent,
     EliminarComponent,
     CrearActualizarClienteComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CrearActualizarProductoComponent
   ],
   imports: [
     BrowserModule,

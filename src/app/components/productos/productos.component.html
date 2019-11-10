@@ -1,1 +1,40 @@
-<p>productos works!</p>
+<div class="row">
+  <div class=" mt-3 col-12 bg-light">
+    <h3>Productos</h3>
+    <p>
+      Cantidad de productos registrados:
+      <strong>{{ listadoProductos.length }}</strong>
+    </p>
+    <h5>Opciones para Productos</h5>
+    <button [routerLink]="['crear']" type="button" class="btn btn-primary">
+      Crear Producto
+    </button>
+  </div>
+</div>
+<!--Tarjeta de presentación de cada cliente-->
+<div class="row" *ngIf="listadoProductos.length == 0">
+  <h1 class="col-8 text text-info">No hay productos cargados.</h1>
+</div>
+<div class="table-responsive" *ngIf="listadoProductos.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Acciones Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of listadoProductos">
+        <td>{{ producto.codigo }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.precio_unitario }}</td>
+        <td>
+          <button class="btn btn-success" [routerLink]="['actualizar', producto.id]">Editar</button>
+          <button class="btn btn-danger" [routerLink]="['eliminar', producto.id]">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
