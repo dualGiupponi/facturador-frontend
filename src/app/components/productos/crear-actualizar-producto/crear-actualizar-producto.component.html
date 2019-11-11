@@ -20,6 +20,11 @@
         <label for="productoForm.nombre">Precio Unitario</label>
         <input type="text" class="form-control" id="productoForm.precio_unitario" placeholder="Ingrese precio unitario del producto" [(ngModel)]="productoForm.precio_unitario">
     </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Descripción</span>
+        </div>
+        <textarea class="form-control col-12" id="productoForm.descripcion" [(ngModel)]="productoForm.descripcion"></textarea>
     <div class="form-group col-8">
         <button class="btn btn-success" (click)="sendProducto()">Guardar Producto</button>
         <button [routerLink]="['/productos']" class="btn btn-danger">Volver a "Productos"</button>
