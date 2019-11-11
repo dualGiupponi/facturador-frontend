@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Producto } from "../models/producto.model";
 
@@ -7,7 +7,8 @@ import { Producto } from "../models/producto.model";
   providedIn: "root"
 })
 export class ProductoService {
-  url: string = 'http://localhost:4000/producto';
+  url: string = "http://localhost:4000/producto";
+
   constructor(private _httpProducto: HttpClient) {}
 
   getAllProducts(): Observable<Producto[]> {
@@ -19,6 +20,7 @@ export class ProductoService {
   }
 
   updateProduct(id: string, producto: Producto): Observable<Producto> {
+    producto.updatedAt = undefined;
     return this._httpProducto.put<Producto>(`${this.url}/${id}`, producto);
   }
 
