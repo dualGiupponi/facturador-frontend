@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { ClienteService } from "../../clientes/service/cliente.service";
 import { ProductoService } from "../../productos/service/producto.service";
+import { FacturaService } from "../../facturas/service/factura.service";
 
 @Component({
   selector: "app-eliminar",
@@ -14,7 +15,8 @@ export class EliminarComponent implements OnInit {
     private rutaActiva: ActivatedRoute,
     private router: Router,
     private _httpCliente: ClienteService,
-    private _httpProducto: ProductoService
+    private _httpProducto: ProductoService,
+    private _httpFacturas: FacturaService
   ) {}
 
   ngOnInit() {}
@@ -33,6 +35,10 @@ export class EliminarComponent implements OnInit {
           .destroyProduct(id)
           .subscribe(data => this.router.navigate(["/productos"]));
         break;
+      case "facturas":
+        this._httpFacturas
+          .deleteFactura(id)
+          .subscribe(data => this.router.navigate(["/facturas"]));
       default:
         break;
     }
@@ -47,6 +53,8 @@ export class EliminarComponent implements OnInit {
       case "productos":
         this.router.navigate(["/productos"]);
         break;
+      case "facturas":
+        this.router.navigate(["/facturas"]);
       default:
         break;
     }

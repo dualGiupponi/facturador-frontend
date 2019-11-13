@@ -9,6 +9,7 @@ import { EliminarComponent } from './components/shared/eliminar/eliminar.compone
 import { CrearActualizarClienteComponent } from './components/clientes/crear-actualizar-cliente/crear-actualizar-cliente.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { CrearActualizarProductoComponent } from './components/productos/crear-actualizar-producto/crear-actualizar-producto.component';
+import { CrearFacturaComponent } from './components/facturas/crear-factura/crear-factura.component';
 
 const routes: Routes = [
   //Ruta Home
@@ -59,6 +60,14 @@ const routes: Routes = [
   {
     path: "facturas",
     component: FacturasComponent
+  },
+  {
+    path: "facturas/crear",
+    component: CrearFacturaComponent
+  },
+  {
+    path: "facturas/eliminar/:id",
+    component: EliminarComponent
   },
   //No encontrado
   {

@@ -4,7 +4,7 @@ export class Producto {
     public nombre: string,
     public codigo: string,
     public descripcion: string,
-    public precio_unitario: string,
+    public precio_unitario: number,
     public createdAt?: String,
     public updatedAt?: String
   ) {}

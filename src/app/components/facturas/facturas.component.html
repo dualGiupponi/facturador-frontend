@@ -1,1 +1,46 @@
-<p>facturas works!</p>
+<div class="row">
+  <div class=" mt-3 col-12 bg-light">
+    <h3>facturas</h3>
+    <p>
+      Cantidad de facturas registradas:
+      <strong>{{ listadoFacturas.length }}</strong>
+    </p>
+    <h5>Opciones para facturas</h5>
+    <button [routerLink]="['crear']" type="button" class="btn btn-primary">
+      Crear Factura
+    </button>
+  </div>
+</div>
+<!--Tarjeta de presentación de cada cliente-->
+<div class="row" *ngIf="listadoFacturas.length == 0">
+  <h1 class="col-8 text text-info">No hay facturas cargadas.</h1>
+</div>
+<div class="table-responsive" *ngIf="listadoFacturas.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Número</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Acciones Factura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let factura of listadoFacturas">
+        <td>{{ factura.numero }}</td>
+        <td>{{ factura.tipo_factura }}</td>
+        <td>{{ factura.fecha | date:'medium' }}</td>
+        <td>{{ factura.cliente.nombre }}</td>
+        <td>
+          <button
+            class="btn btn-danger"
+            [routerLink]="['eliminar', factura.id]"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
