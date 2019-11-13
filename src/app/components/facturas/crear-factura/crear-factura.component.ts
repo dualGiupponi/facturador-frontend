@@ -26,7 +26,7 @@ export class CrearFacturaComponent implements OnInit {
   listadoProductos: Producto[] = [];
   //Se inicializa así para poder acceder a los atributos
   facturaForm: Factura = new Factura(
-    "",
+    undefined,
     "",
     "",
     undefined,
@@ -41,7 +41,8 @@ export class CrearFacturaComponent implements OnInit {
     undefined,
     undefined,
     undefined,
-    new Producto(undefined, undefined, undefined, undefined, undefined)
+    undefined,
+    []
   );
 
   ngOnInit() {
@@ -60,7 +61,7 @@ export class CrearFacturaComponent implements OnInit {
   seleccionProducto(producto: Producto) {
     this.item.codigo_item = producto.codigo;
     this.item.precio_unitario = producto.precio_unitario;
-    this.item.producto = producto;
+    this.item.productos.push(producto)
   }
 
   guardarTransaccion() {
@@ -77,7 +78,8 @@ export class CrearFacturaComponent implements OnInit {
       undefined,
       undefined,
       undefined,
-      new Producto(undefined, undefined, undefined, undefined, undefined)
+      undefined,
+      []
     );
   }
 
@@ -87,8 +89,8 @@ export class CrearFacturaComponent implements OnInit {
 
   sendFactura() {
     this._httpFacturas.createFactura(this.facturaForm).subscribe(data => {
-      console.log(data);
-      this.router.navigate(["/facturas"]);
+      console.log(data)
+      //this.router.navigate(["/facturas"]);
     });
   }
 

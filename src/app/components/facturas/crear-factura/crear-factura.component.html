@@ -83,38 +83,6 @@
   <!--Datos principales de facturación-->
   <!--Tipo de Factura-->
   <div class="form-group col-12">
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Tipo de Factura
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a
-              class="dropdown-item"
-              (click)="facturaForm.tipo_factura = 'A'"
-              >Factura A</a
-            >
-            <a
-              class="dropdown-item"
-              (click)="facturaForm.tipo_factura = 'B'"
-              >Factura B</a
-            >
-            <a
-              class="dropdown-item"
-              (click)="facturaForm.tipo_factura = 'C'"
-              >Factura C</a
-            >
-          </div>
-        </div>
-        <label class="col-form-label col-12">Tipo de Factura: {{ facturaForm.tipo_factura }}</label>
-  <div class="form-group col-12">
-    <!--DropDown de productos-->
     <div class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
@@ -124,116 +92,169 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
-        Productos
+        Tipo de Factura
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a
-          class="dropdown-item"
-          *ngFor="let producto of listadoProductos"
-          (click)="seleccionProducto(producto)"
-          >{{ producto.codigo }} -{{ producto.nombre }}</a
+        <a class="dropdown-item" (click)="facturaForm.tipo_factura = 'A'"
+          >Factura A</a
+        >
+        <a class="dropdown-item" (click)="facturaForm.tipo_factura = 'B'"
+          >Factura B</a
+        >
+        <a class="dropdown-item" (click)="facturaForm.tipo_factura = 'C'"
+          >Factura C</a
         >
       </div>
     </div>
-    <!--Datos del producto-->
+    <label class="col-form-label col-12"
+      >Tipo de Factura: {{ facturaForm.tipo_factura }}</label
+    >
     <div>
+      <label class="col-form-label col-12"
+        >Número de Factura: {{ facturaForm.numero }}</label
+      >
       <input
         type="text"
-        readonly
-        class="form-control-plaintex col-4"
-        id="item.codigo_item"
-        [ngModel]="item.codigo_item"
-        placeholder="Sin Código"
+        class="form-control-plaintex"
+        id="facturaForm.numero"
+        [(ngModel)]="facturaForm.numero"
+        placeholder="Sin Número"
       />
     </div>
     <div>
+      <label class="col-form-label col-12"
+        >Número de punto de venta: {{ facturaForm.punto_venta }}</label
+      >
       <input
         type="text"
-        readonly
-        class="form-control-plaintex col-4"
-        id="item.precio_unitario"
-        [ngModel]="item.precio_unitario"
-        placeholder="Sin Precio"
+        class="form-control-plaintex"
+        id="facturaForm.punto_venta"
+        [(ngModel)]="facturaForm.punto_venta"
+        placeholder="Sin punto de venta"
       />
     </div>
-    <div>
-      <input
-        type="text"
-        class="form-control-plaintex col-4"
-        id="item.cantidad"
-        [(ngModel)]="item.cantidad"
-        placeholder="No existe cantidad seleccionada"
-      />
+    <div class="form-group col-12">
+      <!--DropDown de productos-->
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Productos
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a
+            class="dropdown-item"
+            *ngFor="let producto of listadoProductos"
+            (click)="seleccionProducto(producto)"
+            >{{ producto.codigo }} -{{ producto.nombre }}</a
+          >
+        </div>
+      </div>
+      <!--Datos del producto-->
+      <div>
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintex col-4"
+          id="item.codigo_item"
+          [ngModel]="item.codigo_item"
+          placeholder="Sin Código"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintex col-4"
+          id="item.precio_unitario"
+          [ngModel]="item.precio_unitario"
+          placeholder="Sin Precio"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="form-control-plaintex col-4"
+          id="item.cantidad"
+          [(ngModel)]="item.cantidad"
+          placeholder="No existe cantidad seleccionada"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="form-control-plaintex col-4"
+          id="item.descripcion"
+          [(ngModel)]="item.descripcion"
+          placeholder="Sin Descripcion"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="form-control-plaintex col-4"
+          id="item.iva"
+          [(ngModel)]="item.iva"
+          placeholder="Sin IVA"
+        />%
+      </div>
     </div>
-    <div>
-      <input
-        type="text"
-        class="form-control-plaintex col-4"
-        id="item.descripcion"
-        [(ngModel)]="item.descripcion"
-        placeholder="Sin Descripcion"
-      />
+    <div class="form-group col-8">
+      <button class="btn btn-success" (click)="guardarTransaccion()">
+        Guardar
+      </button>
+      <button class="btn btn-danger" (click)="limpiarItem()">
+        Limpiar Campos
+      </button>
     </div>
-    <div>
-      <input
-        type="text"
-        class="form-control-plaintex col-4"
-        id="item.iva"
-        [(ngModel)]="item.iva"
-        placeholder="Sin IVA"
-      />%
+    <!--Tabla indicando los productos cargados-->
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">IVA</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of facturaForm.items; let indice = index">
+            <td>{{ item.codigo_item }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.precio_unitario }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.iva * 100 }}</td>
+            <td>
+              {{
+                item.cantidad * item.precio_unitario * (1 + item.iva) | number
+              }}
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="eliminarItem(index)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-  <div class="form-group col-8">
-    <button class="btn btn-success" (click)="guardarTransaccion()">
-      Guardar
-    </button>
-    <button class="btn btn-danger" (click)="limpiarItem()">
-      Limpiar Campos
-    </button>
-  </div>
-  <!--Tabla indicando los productos cargados-->
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Código</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Precio Unitario</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">IVA</th>
-          <th scope="col">Subtotal</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of facturaForm.items; let indice=index">
-          <td>{{ item.codigo_item }}</td>
-          <td>{{ item.descripcion }}</td>
-          <td>{{ item.precio_unitario }}</td>
-          <td>{{ item.cantidad }}</td>
-          <td>{{ item.iva * 100 }}</td>
-          <td>
-            {{
-              item.cantidad * item.precio_unitario * (1 + item.iva) | number
-            }}
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="eliminarItem(index)">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!--Botones de guardado de factura en DB-->
-  <div class="form-group col-8 mt-5">
-    <button class="btn btn-success" (click)="sendFactura()">
-      Guardar Factura
-    </button>
-    <button [routerLink]="['/facturas']" class="btn btn-danger">
-      Volver a "Facturas"
-    </button>
+    <!--Botones de guardado de factura en DB-->
+    <div class="form-group col-8 mt-5">
+      <button class="btn btn-success" (click)="sendFactura()">
+        Guardar Factura
+      </button>
+      <button [routerLink]="['/facturas']" class="btn btn-danger">
+        Volver a "Facturas"
+      </button>
+    </div>
   </div>
 </div>
