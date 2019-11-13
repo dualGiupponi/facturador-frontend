@@ -90,7 +90,7 @@ export class CrearFacturaComponent implements OnInit {
   sendFactura() {
     this._httpFacturas.createFactura(this.facturaForm).subscribe(data => {
       console.log(data)
-      //this.router.navigate(["/facturas"]);
+      this.router.navigate(["/facturas"]);
     });
   }
 
